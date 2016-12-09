@@ -1,0 +1,49 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://secure-ds.serving-sys.com/BurstingcachedScripts/libraries/greensock/1_18_0/TweenMax.min.js"></script>
+
+</head>
+
+<body>
+
+      <div id="button">
+        <p>Bounce!</p>
+      </div>
+
+      <div id="line">
+      </div>
+
+      <div style="margin-top: 250px; text-align: center;">
+        <a href="http://greensock.com/ease-visualizer">A useful tool to demonstrate easing!</a>
+      </div>
+
+
+
+    <!-- ANIMATIONS -->
+    <script>
+
+      function transform(){
+        TweenMax.to('#button', 1.5, {y: 200, ease: Bounce.easeOut})
+      }
+
+      $('#button').mousedown(function(){
+        transform();
+      });
+
+
+
+    </script>
+
+
+</body>
+
+</html>

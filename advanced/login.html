@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" href="./main.css">
+    <style>
+        body        { padding-top:80px; }
+    </style>
+</head>
+<body class="login-bg loaded">
+  <div class="container">
+
+
+    <div id="modal" class="well login-wrapper center-block fade-in">
+
+        <div class="login-logoWrapper">
+            <h2 style="text-align: center;">LOGIN</h2>
+        </div>
+
+        <!-- show any messages that come back with authentication -->
+            <div id="error"></div>
+
+        <!-- LOGIN FORM -->
+        <form id="login">
+
+          <div id="userInfo">
+            <div class="form-group">
+                <div class="input-group login-input-wrapper">
+                  <span class="input-group-addon login-input" id="basic-addon1"><i class="fa fa-user"></i></span>
+                  <input id="userName" type="text" class="form-control login-input" placeholder="Username" name="email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group login-input-wrapper">
+                  <span class="input-group-addon login-input" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                  <input id="userPw" type="password" class="form-control login-input" placeholder="Password" name="password">
+                </div>
+            </div>
+          </div>
+
+            <button type="submit" class="btn btn-default btn-lg center-block login-submit">Sign In</button>
+        </form>
+
+    </div>
+
+
+  </div>
+
+  <div id="loader-wrapper">
+
+    <div id="loader">
+      <div>.</div>
+      <div>.</div>
+      <div>.</div>
+    </div>
+
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/1.1.1/js/md5.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://secure-ds.serving-sys.com/BurstingcachedScripts/libraries/greensock/1_18_0/TweenMax.min.js"></script>
+
+<script>
+  $('#userName').focusin(function(){
+    $(this).addClass('login-active-right')
+    $(this).prev().addClass('login-active-left')
+    $(this).parent().addClass('login-input-wrapper-scaled')
+  })
+
+  $('#userName').focusout(function(){
+    $(this).removeClass('login-active-right')
+    $(this).prev().removeClass('login-active-left')
+    $(this).parent().removeClass('login-input-wrapper-scaled')
+  })
+
+  $('#userPw').focusin(function(){
+    $(this).addClass('login-active-right')
+    $(this).prev().addClass('login-active-left')
+    $(this).parent().addClass('login-input-wrapper-scaled')
+  })
+
+  $('#userPw').focusout(function(){
+    $(this).removeClass('login-active-right')
+    $(this).prev().removeClass('login-active-left')
+    $(this).parent().removeClass('login-input-wrapper-scaled')
+  })
+
+    // NIFTY LOGIN LOADER!
+    TweenMax.to('.section-left', 0, {x: '-100%'})
+    TweenMax.to('.section-right', 0, {x: '100%'})
+    TweenMax.to('#loader', 0, {opacity: 0})
+
+    var loader = new TimelineMax({repeat: -1, yoyo: true});
+        loader.staggerTo($('#loader').children(), 2, {opacity: 0}, .2)
+
+    var tl = new TimelineMax({paused: true});
+        tl.to(['.section-left', '.section-right'], 1, {x:"0%", ease: Power4.easeIn})
+          .to('#loader', 1, {opacity: 1}, '+=1')
+
+    $("#login").submit(function(e){
+        e.preventDefault();
+
+        tl.play();
+        })
+
+
+  </script>
+</script>
+</body>
+</html>

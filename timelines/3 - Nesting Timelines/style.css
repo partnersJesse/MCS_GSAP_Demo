@@ -1,0 +1,49 @@
+
+#container {
+width: 100%;
+display: block;
+margin-right: auto;
+margin-left: auto;
+padding-left: 15%;
+}
+
+#button, #ball2, #ball3 {
+  display: inline-block;
+  margin: 0 10%;
+}
+
+#button {
+  position: relative;
+  top: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: #000;
+  border-radius: 100%;
+  color: #fff;
+  padding: 5px 5px;
+  text-align: center;
+  cursor: pointer !important;
+  box-shadow: 2px 2px 2px rgba(32,32,32,.4);
+}
+
+#ball2, #ball3 {
+  position: relative;
+  top: 55px;
+  width: 100px;
+  height: 100px;
+  background-color: #000;
+  border-radius: 100%;
+  box-shadow: 2px 2px 2px rgba(32,32,32,.4);
+}
+
+#button p {
+  margin-top: 35px;
+}
+
+#line{
+  border-top-color: #fff;
+  border-top-width: 2px;
+  border-style: solid;
+  position: relative;
+  top: 215px;
+}

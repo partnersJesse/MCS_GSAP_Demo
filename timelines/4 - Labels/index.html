@@ -1,0 +1,95 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://secure-ds.serving-sys.com/BurstingcachedScripts/libraries/greensock/1_18_0/TweenMax.min.js"></script>
+
+</head>
+
+<body>
+    <div id="row1">
+      <div id="vader">
+      </div>
+
+      <div id="xwing">
+        <div class="explosion"></div>
+      </div>
+
+      <div id="r2d2">
+        <div class="explosion"></div>
+      </div>
+
+      <div id="obiwan">
+        <div class="explosion"></div>
+      </div>
+    </div>
+
+    <div id="row2">
+      <div id="button" class="button">
+        <p>Kill X-Wing</p>
+      </div>
+      <div id="button2" class="button">
+        <p>Kill R2D2</p>
+      </div>
+      <div id="button3" class="button">
+        <p>Kill Obi-Wan</p>
+      </div>
+    </div>
+
+
+    <!-- ANIMATIONS -->
+
+    <script>
+
+        var killObi = new TimelineMax();
+            killObi.to('#vader', 1, {left: '1015px'})
+                    .to( $('#obiwan').children(), 0, {opacity: 1})
+                    .to('#obiwan', 1, {opacity: 0, delay: .5})
+
+        var tl = new TimelineMax({paused: true, onComplete: restart})
+        tl
+          .addLabel('xwing')
+          .to('#vader', 1, {left: '300px'})
+          .to( $('#xwing').children(), 0, {opacity: 1})
+          .to('#xwing', 1, {opacity: 0})
+
+          .to('#vader', 1, {left: '700px'}, 'r2d2')
+          .to( $('#r2d2').children(), 0, {opacity: 1})
+          .to('#r2d2', 1, {opacity: 0, delay: .5})
+
+          .add(killObi, 'obiwan');
+
+
+          function restart(){
+            tl.restart();
+            tl.pause();
+          }
+
+
+      $('#button').mousedown(function(){
+        tl.play('xwing');
+      });
+
+      $('#button2').mousedown(function(){
+        tl.play('r2d2');
+      });
+
+      $('#button3').mousedown(function(){
+        tl.play('obiwan');
+      });
+
+
+
+    </script>
+
+
+</body>
+
+</html>

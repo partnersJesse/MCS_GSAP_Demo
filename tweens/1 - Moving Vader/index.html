@@ -1,0 +1,78 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://secure-ds.serving-sys.com/BurstingcachedScripts/libraries/greensock/1_18_0/TweenMax.min.js"></script>
+
+</head>
+
+<body>
+    <div id="row1">
+      <div id="vader">
+      </div>
+
+      <div id="deathStar">
+      </div>
+    </div>
+
+    <div id="row2">
+      <div id="button">
+        <p>Move Vader 'To'</p>
+      </div>
+    </div>
+
+    <div id="row3">
+      <div id="vader2">
+      </div>
+
+      <div id="deathStar2">
+      </div>
+    </div>
+
+    <div id="row4">
+      <div id="button2">
+        <p>Move Vader 'From'</p>
+      </div>
+    </div>
+
+    <!-- ANIMATIONS -->
+
+    <script>
+
+      function moveTo(){
+        TweenMax.to('#vader', 2, {left: '70%'})
+
+        // RESET VADER OVER 0 SECONDS!
+        TweenMax.to('#vader', 0, {left: '2px', delay: 2})
+      }
+
+      function moveFrom(){
+        TweenMax.to('#vader2', .5, {opacity: 1})
+        TweenMax.from('#vader2', 2, {left: '70%'})
+
+        // RESET VADER OVER 0 SECONDS!
+        TweenMax.to('#vader2', 0, {opacity: 0, delay: 2})
+      }
+
+      $('#button').mousedown(function(){
+        moveTo()
+      });
+
+      $('#button2').mousedown(function(){
+        moveFrom()
+      });
+
+
+    </script>
+
+
+</body>
+
+</html>
